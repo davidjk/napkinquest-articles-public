@@ -1,0 +1,82 @@
+---
+interface Props {
+  /** Visual size. "card" is the boxed version used inline at the end of posts; "compact" is the small footer version. */
+  variant?: 'card' | 'compact';
+  /** Heading shown on the card variant. Ignored for compact. */
+  heading?: string;
+  /** Sub-line shown on the card variant. Ignored for compact. */
+  blurb?: string;
+}
+
+const { variant = 'card', heading = 'Subscribe by email', blurb = 'New posts in your inbox. No spam, no tracking pixels, unsubscribe whenever.' } = Astro.props;
+
+const username = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME ?? '').trim();
+const action = username ? `https://buttondown.com/api/emails/embed-subscribe/${username}` : '';
+const popupTarget = username ? `https://buttondown.com/${username}` : '';
+---
+
+{
+  variant === 'card' ? (
+    <aside class="border-base-300 bg-base-200/40 my-10 rounded-md border px-5 py-6 sm:px-7 sm:py-7">
+      <div class="mb-4">
+        <p class="text-base-content text-lg font-semibold">{heading}</p>
+        <p class="text-base-content/70 text-sm">{blurb}</p>
+      </div>
+      {username ? (
+        <form
+          action={action}
+          method="post"
+          target="popupwindow"
+          onsubmit={`window.open('${popupTarget}', 'popupwindow')`}
+          class="flex flex-col gap-2 sm:flex-row"
+        >
+          <label for="bd-email-card" class="sr-only">
+            Email address
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="bd-email-card"
+            required
+            placeholder="you@example.com"
+            class="input input-bordered w-full sm:flex-1"
+          />
+          <button type="submit" class="btn btn-primary">
+            Subscribe
+          </button>
+        </form>
+      ) : (
+        <p class="text-base-content/70 text-sm">
+          Set <code>PUBLIC_BUTTONDOWN_USERNAME</code> in <code>.env</code> to enable the form.
+        </p>
+      )}
+    </aside>
+  ) : (
+    <div class="border-base-300 mt-6 border-t pt-4">
+      {username ? (
+        <form
+          action={action}
+          method="post"
+          target="popupwindow"
+          onsubmit={`window.open('${popupTarget}', 'popupwindow')`}
+          class="flex flex-col gap-2 sm:flex-row sm:items-center"
+        >
+          <label for="bd-email-footer" class="text-base-content/70 text-sm sm:mr-2">
+            Get new posts by email:
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="bd-email-footer"
+            required
+            placeholder="you@example.com"
+            class="input input-bordered input-sm w-full sm:max-w-xs"
+          />
+          <button type="submit" class="btn btn-primary btn-sm">
+            Subscribe
+          </button>
+        </form>
+      ) : null}
+    </div>
+  )
+}
