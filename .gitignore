@@ -41,3 +41,6 @@ pagefind/
 
 # misc
 *.log
+
+# Agent / session guidance — kept local, not tracked
+CLAUDE.md
