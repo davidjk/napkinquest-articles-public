@@ -48,7 +48,16 @@ function normalize(entry: CollectionEntry<'posts'>): Post {
   } as Post;
 }
 
-/** Public slug used for the URL: filename minus locale and extension. */
+/**
+ * Public slug used for the URL.
+ *
+ * Articles live in bundle form at `posts/<slug>/index.md`. Astro's content
+ * loader pre-normalizes `entry.id` for us — it strips both the extension and
+ * a trailing `/index` segment — so a file at `posts/welcome/index.md` arrives
+ * here as id `welcome`. This function only needs to strip any locale prefix
+ * (e.g. `en/welcome` -> `welcome`). The `.md|.mdx` strip is left as defensive
+ * cruft from the prior flat layout.
+ */
 export function postSlug(entry: Post): string {
   return stripLocaleFromId(entry.id).replace(/\.(md|mdx)$/i, '');
 }
