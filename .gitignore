@@ -44,8 +44,3 @@ pagefind/
 
 # Agent / session guidance — kept local, not tracked
 CLAUDE.md
-
-# In-progress drafts (markdown + supporting assets) — staged here until published.
-# Preview by symlinking the .md into posts/; symlinks show up in `git status`
-# so they're easy to spot, but never `git add` them — publish via `mv` instead.
-drafts/
