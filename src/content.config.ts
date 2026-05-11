@@ -74,10 +74,11 @@ const baseFrontmatter = ({ image }: SchemaContext) =>
 export type PostFrontmatter = z.infer<ReturnType<typeof baseFrontmatter>>;
 
 const posts = defineCollection({
-  // NapkinQuest articles live at the repo root in `./posts/` so the article
-  // repo stays a clean store of just markdown plus minimal config.
+  // NapkinQuest articles use the bundle layout: `./posts/<slug>/index.md`
+  // alongside the article's model, build script, and assets. See
+  // davidjk/napkinquest-press#18.
   loader: glob({
-    pattern: '*.{md,mdx}',
+    pattern: '*/index.{md,mdx}',
     base: './posts',
   }),
   schema: baseFrontmatter,
