@@ -19,7 +19,7 @@ npm run dev                # http://localhost:4321
 npm run build              # static output -> dist/
 ```
 
-`legacy-peer-deps=true` is pinned in `.npmrc` because the theme pins eslint v10 and `eslint-plugin-jsx-a11y` declares an outdated peer range. Without the override, install fails with ERESOLVE. Node version is pinned to `20` in `.nvmrc` (Astro 5 needs ≥18.17.1, ≥20.3, or ≥22).
+`legacy-peer-deps=true` is pinned in `.npmrc` because the theme pins eslint v10 and `eslint-plugin-jsx-a11y` declares an outdated peer range. Without the override, install fails with ERESOLVE. Node version is pinned to `22` in `.nvmrc` (Astro 6 requires ≥22.12.0).
 
 ## Theme
 
@@ -37,7 +37,7 @@ The build is self-described by three files at the repo root:
 
 - `wrangler.jsonc` — declares the Worker name, compatibility date, and static-asset config (`./dist` with `404-page` fallback for misses).
 - `.npmrc` — `legacy-peer-deps=true`, so `npm ci` succeeds without an env-var override.
-- `.nvmrc` — pins Node to 20.
+- `.nvmrc` — pins Node to 22 (Astro 6 requires ≥22.12.0).
 
 ```jsonc
 {
