@@ -1,5 +1,5 @@
-import avatarImg from './assets/images/site/avatar.svg';
-import ogDefaultImg from './assets/images/site/og-default.svg';
+import avatarImg from './assets/images/site/avatar.png';
+import ogDefaultImg from './assets/images/site/og-default.png';
 import type { SiteConfig, NavItem, SocialLink, GiscusConfig } from './types/config';
 
 /**
@@ -51,13 +51,13 @@ export const SITE: SiteConfig = {
   /** Default site title used as homepage <title> and meta. */
   title: 'NapkinQuest',
   /** Site tagline / description. */
-  description: 'Analytical writing on the questions worth running the numbers on.',
+  description: 'Running some numbers on the back of a napkin to get a clue.',
   /** Author/handle shown in footer + meta. */
   author: {
     name: 'David Kim',
     url: GITHUB_HANDLE ? `https://github.com/${GITHUB_HANDLE}` : undefined,
     avatar: avatarImg,
-    bio: 'Notes from the back of a napkin.',
+    bio: 'Running some numbers on the back of a napkin to get a clue.',
   },
   /** Default OG image. */
   defaultOgImage: ogDefaultImg.src,

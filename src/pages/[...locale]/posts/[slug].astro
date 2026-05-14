@@ -1,0 +1,50 @@
+---
+import { render } from 'astro:content';
+import PostLayout from '~/layouts/PostLayout.astro';
+import { SITE, type Locale } from '~/config';
+import { getPosts, postSlug, sortPostsByDate, type Post } from '~/utils/posts';
+
+export async function getStaticPaths() {
+  const paths: Array<{
+    params: { locale: string | undefined; slug: string };
+    props: { post: Post; prev?: Post; next?: Post; locale: Locale };
+  }> = [];
+
+  for (const locale of SITE.locales) {
+    const posts = await getPosts(locale);
+    // Newest-first. "prev" in the post-nav is the older post that came before
+    // this one in reading order; "next" is the newer one.
+    const byDate = sortPostsByDate(posts);
+    for (let i = 0; i < byDate.length; i++) {
+      const post = byDate[i];
+      paths.push({
+        params: {
+          locale: locale === SITE.defaultLocale ? undefined : locale,
+          slug: postSlug(post),
+        },
+        props: {
+          post,
+          prev: byDate[i + 1],
+          next: byDate[i - 1],
+          locale,
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+const { post, prev, next, locale } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<PostLayout
+  post={post}
+  headings={headings}
+  body={post.body ?? ''}
+  prev={prev}
+  next={next}
+  locale={locale}
+>
+  <Content />
+</PostLayout>

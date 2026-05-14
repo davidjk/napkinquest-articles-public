@@ -12,9 +12,7 @@ import tailwindcss from '@tailwindcss/vite';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
-import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
 import { remarkAsHtml } from './src/plugins/remark-ashtml.ts';
 import { remarkAlert } from './src/plugins/remark-alert.ts';
 
@@ -122,17 +120,12 @@ export default defineConfig({
   },
 
   markdown: {
-    // `remark-math` parses `$inline$` and `$$display$$` blocks into MDAST
-    // math nodes; `rehype-katex` converts them to pre-rendered HTML at
-    // build time so no JavaScript is shipped to the client.
-    //
-    // The accompanying KaTeX stylesheet (`katex/dist/katex.min.css`) is
-    // loaded ONLY on pages that opt in via `math: true` in frontmatter,
-    // through `<MathStyles />` in the post / page layouts. This keeps the
-    // CSS (~25kB gzipped) off pages that don't need it.
-    remarkPlugins: [remarkAlert, remarkAsHtml, remarkGfm, remarkMath],
+    // Math (`remark-math` + `rehype-katex`) was removed because it mis-parsed
+    // currency strings like "$153 ... $137" as inline math. Re-add the plugins
+    // here when an article actually needs LaTeX math, or wire them in
+    // conditionally on `math: true` in frontmatter via a custom plugin.
+    remarkPlugins: [remarkAlert, remarkAsHtml, remarkGfm],
     rehypePlugins: [
-      rehypeKatex,
       rehypeSlug,
       [
         rehypeAutolinkHeadings,
