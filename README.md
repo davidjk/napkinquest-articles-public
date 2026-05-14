@@ -14,12 +14,12 @@ Free NapkinQuest articles plus the Astro static site that builds them.
 
 ```sh
 cp .env.example .env       # set PUBLIC_BUTTONDOWN_USERNAME, PUBLIC_GITHUB_HANDLE, etc.
-npm install --legacy-peer-deps
+npm install                # .npmrc applies legacy-peer-deps automatically
 npm run dev                # http://localhost:4321
 npm run build              # static output -> dist/
 ```
 
-`--legacy-peer-deps` is required because the theme pins eslint v10 and `eslint-plugin-jsx-a11y` declares an outdated peer range. Bun resolves this loosely; npm needs the override.
+`legacy-peer-deps=true` is pinned in `.npmrc` because the theme pins eslint v10 and `eslint-plugin-jsx-a11y` declares an outdated peer range. Without the override, install fails with ERESOLVE. Node version is pinned to `20` in `.nvmrc` (Astro 5 needs ≥18.17.1, ≥20.3, or ≥22).
 
 ## Theme
 
@@ -33,7 +33,11 @@ Host: **Cloudflare Workers** with Static Assets, push-to-deploy via the GitHub i
 
 ### Repo config
 
-`wrangler.jsonc` at the repo root declares the static-asset deploy:
+The build is self-described by three files at the repo root:
+
+- `wrangler.jsonc` — declares the Worker name, compatibility date, and static-asset config (`./dist` with `404-page` fallback for misses).
+- `.npmrc` — `legacy-peer-deps=true`, so `npm ci` succeeds without an env-var override.
+- `.nvmrc` — pins Node to 20.
 
 ```jsonc
 {
@@ -43,18 +47,15 @@ Host: **Cloudflare Workers** with Static Assets, push-to-deploy via the GitHub i
 }
 ```
 
-`not_found_handling: "404-page"` serves `dist/404.html` on misses (which Astro generates).
-
 ### Cloudflare Workers project settings
 
 - **Project name**: `napkinquest-articles-public` (must match `wrangler.jsonc` `name`)
 - **Build command**: `npm run build`
 - **Deploy command**: `npx wrangler deploy`
-- **Environment variables** (under Advanced settings → Build variables):
-  - `NPM_FLAGS=--legacy-peer-deps` — required; the theme pins eslint v10 against an outdated peer range. Without this, the install step fails.
-  - `NODE_VERSION=20` — Astro 5 needs ≥18.17.1, ≥20.3, or ≥22; the build env defaults to an older version.
 - **Runtime variables** (set on the Worker itself, used at request time):
   - `SITE_URL` and every `PUBLIC_*` variable from `.env.example`.
+
+Build-time env vars (`NPM_FLAGS`, `NODE_VERSION`) are not required — `.npmrc` and `.nvmrc` cover both.
 
 Default URL: `https://napkinquest-articles-public.<account-subdomain>.workers.dev`. Production custom domain is wired via DNSimple (see below).
 
