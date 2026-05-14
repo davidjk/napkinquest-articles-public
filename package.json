@@ -5,6 +5,9 @@
   "description": "NapkinQuest free articles, built into a static site via Astro (Chirping Astro theme).",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
