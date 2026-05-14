@@ -10,7 +10,7 @@ interface Props {
 
 const { variant = 'card', heading = 'Subscribe by email', blurb = 'New posts in your inbox. No spam, no tracking pixels, unsubscribe whenever.' } = Astro.props;
 
-const username = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME ?? '').trim();
+const username = (import.meta.env.PUBLIC_BUTTONDOWN_USERNAME ?? 'napkinquest').trim();
 const action = username ? `https://buttondown.com/api/emails/embed-subscribe/${username}` : '';
 const popupTarget = username ? `https://buttondown.com/${username}` : '';
 ---
