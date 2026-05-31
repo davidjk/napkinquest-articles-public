@@ -83,4 +83,4 @@ Put it as a breakeven. To match golf's revenue per gallon, US data centers would
 
 Neither side is the water villain. Against agriculture, both are trivial: golf's 425 billion gallons is about 1.6 percent of what US irrigation consumes. "Golf uses way more water than data centers" is true, but only inside a specific and increasingly dated framing.
 
-*Every figure here comes from a spreadsheet model. Change one assumption, the AI method, the projection year, the golf consumption fraction, or the electricity water intensity, and the four cells move with you.*
+*Every figure here comes from a [spreadsheet model](https://github.com/davidjk/napkinquest-articles-public/blob/main/posts/golf-vs-data-centers-water/model.xlsx). Change one assumption, the AI method, the projection year, the golf consumption fraction, or the electricity water intensity, and the four cells move with you.*
