@@ -15,8 +15,6 @@ US agriculture consumes something like 73 billion gallons of water a day through
 
 Golf and AI are both discretionary. You can argue about how discretionary AI is, but nobody starves if a hyperscaler delays a training run, and nobody starves if a fairway goes brown.
 
-Everything below is United States, national, and annual. The figures are consumption, not withdrawal: water that evaporates or transpires and never returns to the source, rather than water that is borrowed and largely given back. Holding both sides to consumption is the choice that moves the answer most.
-
 ## "A golf club uses more water than ChatGPT"
 
 The viral form is blunt. "A single golf club uses more water than ChatGPT."[^2] Analyst write-ups and local-news explainers run the same play: golf in the United States uses on the order of 1.5 to 2 billion gallons a day, data centers use about 17 billion gallons a year, so golf wins by many multiples. One widely shared Arizona analysis put Maricopa County golf at roughly 30 times the water of the county's data centers and concluded the server farms are not the villains.[^3]
