@@ -1,7 +1,7 @@
 ---
 title: "Is a county hospital communist?"
 description: "Opponents call Mamdani's city grocery store communism. Dallas owns and runs public hospitals. Don't fall for all the name-calling. "
-pubDate: 2026-06-01
+pubDate: 2026-06-09
 ---
 
 I recently had an interesting conversation about Zohran Mamdani with a friend from Texas. Zohran Mamdani was sworn in as mayor that January[^1], and the word going around about him wasn't "liberal," or even "socialist." It was "communist." The President got there first, posting that Mamdani was a "100% Communist Lunatic" the night he won the primary[^3]. And it wasn't only him, New Yorkers I think of as reasonable are uneasy too.
