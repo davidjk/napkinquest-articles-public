@@ -44,3 +44,7 @@ pagefind/
 
 # Agent / session guidance — kept local, not tracked
 CLAUDE.md
+
+# Promo assets (captions, carousel scripts and PNGs) — kept local, not tracked
+posts/*/promo/
+promo/
