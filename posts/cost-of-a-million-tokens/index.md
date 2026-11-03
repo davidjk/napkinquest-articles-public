@@ -5,6 +5,8 @@ pubDate: 2026-05-15
 tags: ['ai', 'economics']
 ---
 
+*Update, November 2026: Anthropic's S-1 let us check this article against real numbers, and some of it didn't hold up. We spread fixed costs over too few tokens, so the $154 per million is closer to $33 on the article's own figures; the API prices were already out of date when we published; and the "1.9x" demand figure measured spending, not demand. The follow-up, [Can a Frontier AI Lab Pay Its Own Compute Bill?](/posts/frontier-labs-reassessed/), corrects these and redoes the analysis with the S-1.*
+
 OpenAI projected a $5 billion loss for 2024 on $3.7 billion in revenue per September 2024 reporting,[^1] and projects $44 billion in cumulative losses before turning profitable in 2029.[^2] The industry's five-year capex commitments run to hundreds of billions. The public debate has split into "this is unsustainable" and "this works out fine," both confidently asserted.
 
 A more useful question: what demand picture is today's spending pricing in? Compute the cost per million output tokens, ask what revenue that cost requires, and the $200 billion commitments stop looking insane and start looking like a bet on a specific scenario.
@@ -13,7 +15,7 @@ Two cost figures answer different questions. On a lab cash basis (what labs spen
 
 So who's right? If demand compounds enough to cover the full-economic basis (the spending implies the industry needs roughly twice today's tokens), all three frontier labs work. If demand stalls, the third lab exits frontier-class economics, though under the FTC/DOJ posture in the 2023 Merger Guidelines and the FTC's January 2025 6(b) report on CSP-AI partnerships, lab-on-lab M&A would not clear review. The realistic exit paths are wind-down, asset sale to a non-AI strategic, talent-and-IP acqui-hire, or absorption by a CSP under a non-controlling structure. Those paths disperse the revenue pool rather than re-pooling it to the survivors, so the survivor margins in Scenario B end up smaller than a "two labs absorb the third" story would imply. Bulls and bears are arguing about which scenario, not whether the spending could ever be earned back.
 
-The cost stack helps locate where each lab stands. Inference compute is small, under $10 per million output tokens, well below what the popular "the GPU bill is the cost" framing suggests. The flat-rate consumer subscription is where the subsidy concentrates, while API and enterprise contracts fund the rest of the business. Three deals last month shifted which frontier lab is most cost-exposed, and not the obvious candidate. The numbers come from a [spreadsheet model](#) with editable inputs across low, mid, and high scenarios; I'd update most of these conclusions if the key inputs turned out to be off by a lot.
+The cost stack helps locate where each lab stands. Inference compute is small, under $10 per million output tokens, well below what the popular "the GPU bill is the cost" framing suggests. The flat-rate consumer subscription is where the subsidy concentrates, while API and enterprise contracts fund the rest of the business. Three deals last month shifted which frontier lab is most cost-exposed, and not the obvious candidate. The numbers come from a [spreadsheet model](https://github.com/davidjk/napkinquest-articles-public/blob/main/posts/cost-of-a-million-tokens/model.xlsx) with editable inputs across low, mid, and high scenarios; I'd update most of these conclusions if the key inputs turned out to be off by a lot.
 
 ## The cost stack: five layers, one dominates.
 
@@ -159,7 +161,7 @@ The 1.9x looks crazy at the seat-count level and routine at the per-user intensi
 
 ---
 
-*The model behind this analysis is available as a [spreadsheet with editable inputs](#).*
+*The model behind this analysis is available as a [spreadsheet with editable inputs](https://github.com/davidjk/napkinquest-articles-public/blob/main/posts/cost-of-a-million-tokens/model.xlsx).*
 
 ---
 
